@@ -132,8 +132,6 @@ namespace GithubConnection.Services
 
                 context.SaveChanges();
                 Console.WriteLine($"Elementów w bazie danych: [{context.CommitsTable.Count()}]");
-                context.CommitsTable.RemoveRange(context.CommitsTable);
-                context.SaveChanges();
             }
         }
     }

@@ -6,19 +6,10 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using GithubConnection.Structs;
 
 namespace GithubConnection.Services
 {
-    public struct ResponseStatus
-    {
-        public bool WasSuccesfull;
-        public string Output;
-    }
-    public struct ResponseForCommitsStatus
-    {
-        public bool WasSuccesfull;
-        public List<CommitGithubModel> Output;
-    }
     public class RequestService
     {
         public async Task<ResponseStatus> GetResponse(string url)
@@ -29,7 +20,6 @@ namespace GithubConnection.Services
                 using (HttpClient client = new HttpClient())
                 {
                     client.DefaultRequestHeaders.Accept.Add( new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-
                     client.DefaultRequestHeaders.UserAgent.TryParseAdd("request");
 
                     using (HttpResponseMessage response = client.GetAsync(url).Result)
@@ -91,9 +81,7 @@ namespace GithubConnection.Services
                                 }
                             }
                         }
-                        
                     }
-
                 }
             }
             catch

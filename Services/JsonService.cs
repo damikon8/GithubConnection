@@ -12,12 +12,10 @@ namespace GithubConnection.Services
         public string GetUserHtmlUrl(string json)
         {
             dynamic deserialized = JsonConvert.DeserializeObject(json);
-
             if (deserialized != null)
             {
                 return deserialized.html_url;
             }
-
             return string.Empty;
         }
 
